@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="@dimen/large_padding"
+    android:orientation="vertical"
+    tools:context=".ui.admin.adminNav.AdminNavDrawer">
+
+    <LinearLayout
+        android:id="@+id/customers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/item_back"
+        android:padding="@dimen/small_padding">
+
+        <ImageView
+            android:layout_width="@dimen/nav_icon"
+            android:layout_height="@dimen/nav_icon"
+            android:src="@drawable/ic_group"
+            android:tint="@color/colorPrimary"
+            android:layout_gravity="center_vertical"
+            android:padding="4dp" />
+
+        <TextView
+            android:text="@string/customers"
+            style="@style/NavTextStyle"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/very_small_padding"
+        android:id="@+id/vehicles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/item_back"
+        android:padding="@dimen/small_padding">
+
+        <ImageView
+            android:layout_width="@dimen/nav_icon"
+            android:layout_height="@dimen/nav_icon"
+            android:src="@drawable/red_car"
+            android:tint="@color/colorPrimary"
+            android:layout_gravity="center_vertical"
+            android:padding="4dp" />
+
+        <TextView
+            android:text="@string/vehicles"
+            style="@style/NavTextStyle"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
+
+</LinearLayout>

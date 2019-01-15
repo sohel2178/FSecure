@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:focusableInTouchMode="true"
+    tools:context="com.forbitbd.fsecure.ui.login.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/logo"
+        app:srcCompat="@drawable/sultan" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/large_padding"
+        android:layout_centerInParent="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/large_padding"
+                android:background="@drawable/login_back">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_marginTop="@dimen/medium_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password"
+                        android:inputType="textPassword" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+
+
+
+            <Button
+                android:layout_marginTop="@dimen/medium_padding"
+                android:id="@+id/login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/rect_ripple"
+                android:text="@string/login"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="@dimen/small_padding"
+                android:id="@+id/forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/forgotten_password"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="@dimen/medium_padding"/>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="3"
+                    android:background="#777777"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="OR"
+                    android:gravity="center_horizontal"
+                    android:textSize="16sp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="3"
+                    android:background="#777777"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="@dimen/medium_padding"
+                android:id="@+id/sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/register_button_back"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/register"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:padding="@dimen/large_padding"
+        android:layout_marginBottom="@dimen/default_margin">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_visit"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_padding"
+                android:id="@+id/facebook"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="@string/mobitrack_facebook"
+                android:src="@drawable/ic_facebook" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_padding"
+                android:id="@+id/twitter"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="@string/mobitrack_google_plus"
+                android:src="@drawable/ic_twiitter" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_padding"
+                android:id="@+id/linked_in"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="@string/mobitrack_twitter"
+                android:src="@drawable/linkedin" />
+
+            <ImageView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="@string/mobitrack_call"
+                android:src="@drawable/ic_call" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+   <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_margin"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <com.mobitrack.mobi.customView.MyEditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_height"
+            android:hint="@string/email"
+            android:id="@+id/email"
+            android:inputType="textEmailAddress"
+            android:drawableTint="@color/red"
+            android:drawablePadding="@dimen/default_margin"
+            android:drawableStart="@drawable/email"/>
+
+        <com.mobitrack.mobi.customView.MyEditText
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edit_text_height"
+            android:hint="@string/password"
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:drawableTint="@color/red"
+            android:drawablePadding="@dimen/default_margin"
+            android:paddingStart="@dimen/default_margin"
+            android:drawableStart="@drawable/key"/>
+
+        <Button
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MyButton"
+            android:text="@string/login"
+            android:id="@+id/login"/>
+
+        <Button
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MyButton"
+            android:text="@string/sign_up"
+            android:background="@color/icon_color"
+            android:id="@+id/sign_up"/>
+
+    </LinearLayout>-->
+
+
+
+</RelativeLayout>

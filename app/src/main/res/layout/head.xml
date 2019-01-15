@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_margin">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/medium_padding"
+        android:textColorHint="@color/dark_grey"
+        android:fontFamily="sans-serif-condensed"
+        android:id="@+id/ti_name">
+
+        <EditText
+            android:id="@+id/head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:hint="@string/head_name"
+            android:inputType="text" />
+
+    </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>

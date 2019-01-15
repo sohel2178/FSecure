@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp"
+    android:background="@drawable/item_back"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="@dimen/default_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_weight="3">
+
+            <TextView
+                android:id="@+id/name"
+                style="@style/TaskTitle"
+                android:layout_width="wrap_content"
+                android:padding="@dimen/very_small_padding"
+                android:text="@string/name"
+                android:textSize="@dimen/medium_text_size" />
+
+            <TextView
+                android:id="@+id/tranaction_date"
+                style="@style/TaskTitle"
+                android:layout_width="wrap_content"
+                android:padding="@dimen/very_small_padding"
+                android:text="@string/name"
+                android:textSize="@dimen/small_text_size"
+                android:textStyle="italic"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/from"
+                style="@style/TaskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Cash"
+                android:padding="@dimen/very_small_padding"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TaskTitle"
+                android:padding="@dimen/very_small_padding"
+                android:gravity="center"
+                android:text="@string/to"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/to"
+                style="@style/TaskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/very_small_padding"
+                android:textSize="12sp"
+                android:text="Hardware"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/amount"
+            style="@style/TaskTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:text="20000"
+            android:gravity="center_vertical|end"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
