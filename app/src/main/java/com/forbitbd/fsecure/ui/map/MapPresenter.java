@@ -165,6 +165,8 @@ public class MapPresenter implements MapContract.Presenter {
                 FireData fireData = dataSnapshot.getValue(FireData.class);
                 mView.updateCurrentVehicle(fireData);
 
+                Log.d("JJJJJJ","Called");
+
             }
         }
 

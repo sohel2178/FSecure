@@ -1,15 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:folding-cell="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="@dimen/small_padding"
     app:cardElevation="8dp">
 
-    <RelativeLayout
+    <com.ramotion.foldingcell.FoldingCell
+
+        android:id="@+id/folding_cell"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        folding-cell:animationDuration="500"
+        folding-cell:backSideColor="@color/light_back"
+        folding-cell:cameraHeight="30"
+        folding-cell:additionalFlipsCount="0"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/cell_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            android:visibility="gone">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginTop="@dimen/large_padding"
+                android:id="@+id/driver_image"
+                android:layout_width="@dimen/driver_image_size"
+                android:layout_height="@dimen/driver_image_size"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_profile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver Name"
+                android:id="@+id/driver_name"
+                android:layout_gravity="center_horizontal"
+                android:textSize="14sp"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver Phone"
+                android:id="@+id/driver_phone_txt"
+                android:layout_gravity="center_horizontal"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:padding="@dimen/small_padding"
+                android:textColor="@color/white"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/large_padding"
+                android:background="@color/white">
+
+                <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="3"
+                       android:padding="@dimen/small_padding"
+                       android:text="Registration Number"
+                       />
+
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_weight="4"
+                       android:padding="@dimen/small_padding"
+                       android:id="@+id/registration_number"
+                       android:text="Registration Number"
+                       />
+               </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="@dimen/small_padding"
+                        android:text="Vehicle Type"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:padding="@dimen/small_padding"
+                        android:id="@+id/vehicle_type_two"
+                        android:text="Registration Number"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="@dimen/small_padding"
+                        android:text="Milage"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:padding="@dimen/small_padding"
+                        android:id="@+id/mileage"
+                        android:text="Milage"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="@dimen/small_padding"
+                        android:text="Engine Status"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:padding="@dimen/small_padding"
+                        android:id="@+id/engine_status"
+                        android:text="Milage"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:padding="@dimen/small_padding"
+                        android:text="Current Location"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:padding="@dimen/small_padding"
+                        android:id="@+id/current_location"
+                        android:text="Milage"
+                        />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/medium_padding">
+
+                    <ImageView
+                        android:id="@+id/view"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/ripple"
+                        android:src="@drawable/marker"
+                        android:tint="@color/white"
+                        android:layout_marginEnd="@dimen/medium_padding"/>
+
+                    <ImageView
+                        android:id="@+id/edit"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/ripple"
+                        android:src="@drawable/ic_edit"
+                        android:tint="@color/white"
+                        android:layout_marginEnd="@dimen/medium_padding"/>
+
+                    <ImageView
+                        android:id="@+id/at"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ripple"
+                        android:src="@drawable/command"
+                        android:tint="@color/white"
+                        android:layout_marginEnd="@dimen/medium_padding"/>
+
+                    <ImageView
+                        android:id="@+id/driver_phone"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/ripple"
+                        android:src="@drawable/ic_call"
+                        android:tint="@color/white"
+                        android:layout_marginEnd="@dimen/medium_padding"/>
+
+                    <ImageView
+                        android:id="@+id/share"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/ripple"
+                        android:src="@drawable/ic_share"
+                        android:tint="@color/white"
+                        android:layout_marginEnd="@dimen/medium_padding"/>
+
+                    <ImageView
+                        android:id="@+id/share_user"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:background="@drawable/ripple"
+                        android:src="@drawable/ic_group"
+                        android:tint="@color/white" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+
+
+        </LinearLayout>
+        ​
+        <LinearLayout
+            android:id="@+id/cell_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/medium_padding"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:padding="@dimen/small_padding"
+                android:id="@+id/indicator"
+                android:src="@drawable/bullet"
+                android:tint="@color/colorAccent"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_marginStart="@dimen/medium_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DHK-GA-11-12233"
+                    android:textSize="16sp"
+                    android:padding="@dimen/small_padding"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/vehicle_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="DHK-GA-11-12233"
+                    android:textSize="16sp"
+                    android:padding="@dimen/small_padding"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        ​
+    </com.ramotion.foldingcell.FoldingCell>
+
+    <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/large_padding">
@@ -20,20 +309,13 @@
             android:layout_marginEnd="@dimen/default_margin"
             android:layout_marginStart="@dimen/default_margin">
 
-            <RelativeLayout
+           &lt;!&ndash; <RelativeLayout
                 android:id="@+id/top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/medium_padding">
 
-                <TextView
-                    android:id="@+id/model"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="DHK-GA-11-12233"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+
 
                 <ImageView
                     android:id="@+id/indicator"
@@ -42,7 +324,7 @@
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/red_car" />
 
-            </RelativeLayout>
+            </RelativeLayout>&ndash;&gt;
 
             <RelativeLayout
                 android:id="@+id/mid"
@@ -112,44 +394,15 @@
                         android:src="@drawable/ic_group"
                         android:tint="@color/white" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/driver_image"
-                        android:layout_width="@dimen/driver_image_size"
-                        android:layout_height="@dimen/driver_image_size"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_profile" />
+
 
                 </FrameLayout>
 
 
-                <TextView
-                    android:id="@+id/driver_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ttt"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/small_padding"
-                    android:text="@string/driver_name"
-                    android:textAlignment="center"
-                    android:textColor="#670c02"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/current_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/driver_name"
-                    android:layout_centerHorizontal="true"
-                    android:drawablePadding="@dimen/medium_padding"
-                    android:drawableStart="@drawable/ic_location"
-                    android:drawableTint="@color/colorPrimary"
-                    android:text="West DhanMondi, Sankar,Dhanmondi,Dhaka-1204"
-                    android:textColor="#212121"
-                    android:textSize="@dimen/small_text_size" />
 
             </RelativeLayout>
 
         </RelativeLayout>
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </android.support.v7.widget.CardView>

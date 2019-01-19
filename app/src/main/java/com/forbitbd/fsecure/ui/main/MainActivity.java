@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import com.forbitbd.fsecure.activities.BaseActivity;
 import com.forbitbd.fsecure.R;
@@ -14,6 +15,8 @@ import com.forbitbd.fsecure.ui.main.noInternet.NoInternetFragment;
 import com.forbitbd.fsecure.ui.main.profile.ProfileFragment;
 import com.forbitbd.fsecure.utility.Constant;
 import com.forbitbd.fsecure.utility.MyUtil;
+import com.mxn.soul.flowingdrawer_core.ElasticDrawer;
+import com.mxn.soul.flowingdrawer_core.FlowingDrawer;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.IOException;
@@ -22,6 +25,8 @@ public class MainActivity extends BaseActivity implements MainContract.View{
 
 
     private MainPresenter mPresenter;
+
+    private FlowingDrawer mDrawer;
 
 
     @Override
@@ -45,6 +50,26 @@ public class MainActivity extends BaseActivity implements MainContract.View{
         }*/
     }
 
+    private void setupDrawer(){
+
+        mDrawer = (FlowingDrawer) findViewById(R.id.drawerlayout);
+        mDrawer.setTouchMode(ElasticDrawer.TOUCH_MODE_BEZEL);
+        mDrawer.setOnDrawerStateChangeListener(new ElasticDrawer.OnDrawerStateChangeListener() {
+            @Override
+            public void onDrawerStateChange(int oldState, int newState) {
+                if (newState == ElasticDrawer.STATE_CLOSED) {
+                    Log.i("MainActivity", "Drawer STATE_CLOSED");
+                }
+            }
+
+            @Override
+            public void onDrawerSlide(float openRatio, int offsetPixels) {
+                Log.i("MainActivity", "openRatio=" + openRatio + " ,offsetPixels=" + offsetPixels);
+            }
+        });
+
+    }
+
     @Override
     public void startLoginActivity() {
         finish();
@@ -54,7 +79,9 @@ public class MainActivity extends BaseActivity implements MainContract.View{
 
     @Override
     public void loadHomeFragment() {
-        setUpNavigationDrawer();
+        //setUpNavigationDrawer();
+        setupToolbar();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportFragmentManager().beginTransaction().replace(R.id.main_container,new HomeFragment())
                 .commit();
 

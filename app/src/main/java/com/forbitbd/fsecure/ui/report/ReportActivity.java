@@ -256,7 +256,9 @@ public class ReportActivity extends PrebaseActivity implements View.OnClickListe
 
             case R.id.anim:
                 if(totalDistance>1000){
-                    startActivity(new Intent(getApplicationContext(),RawAnim.class));
+                    Intent intent = new Intent(getApplicationContext(),RawAnim.class);
+                    intent.putExtra(Constant.V_TYPE,vehicle.getVehicle_type());
+                    startActivity(intent);
                 }
 
                 break;

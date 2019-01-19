@@ -178,11 +178,21 @@ public class StatusFragment extends Fragment implements VehicleStatusListener {
             Intent intent = new Intent(getContext(),TripAnimActivity.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable(Constant.DATA, (Serializable) rDataList);
+            bundle.putInt(Constant.V_TYPE,getVehicleType());
             intent.putExtras(bundle);
             startActivity(intent);
         }else{
             Toast.makeText(getContext(), "No Data Found to Animate Car", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private int getVehicleType(){
+        int veTY = 1;
+        if(getActivity() instanceof ReportActivity){
+            ReportActivity ra = (ReportActivity) getActivity();
+            veTY =ra.getVehicleType();
+        }
+        return veTY;
     }
 
     private List<RData> getFData(VehicleStatus status){

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">F Secure</string>
+    <string name="app_name">Sultan Tracker</string>
     <string name="contact_us">Contact Us</string>
 
     <!--<string name="google_map_key_my">AIzaSyDpIfAvz9xaXCiBueo3SNYOj6rgqvRJxFk</string>-->
@@ -52,6 +52,16 @@
         <item>None</item>
         <item>Expense</item>
         <item>Income</item>
+    </string-array>
+
+    <string-array name="vehicle_type_array">
+        <item>CAR</item>
+        <item>BIKE</item>
+        <item>MICRO-BUS</item>
+        <item>BUS</item>
+        <item>TRUCK</item>
+        <item>CNG</item>
+        <item>WATER-VESSEL</item>
     </string-array>
 
 

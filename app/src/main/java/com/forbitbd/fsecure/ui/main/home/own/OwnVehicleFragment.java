@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -60,11 +61,11 @@ public class OwnVehicleFragment extends Fragment {
         adapter = new FirebaseRecyclerAdapter<Vehicle, VehicleHolder>(Vehicle.class, R.layout.single_driver, VehicleHolder.class,
                 query) {
             @Override
-            protected void populateViewHolder(VehicleHolder viewHolder, final Vehicle model, int position) {
+            protected void populateViewHolder(final VehicleHolder viewHolder, final Vehicle model, int position) {
 
                 viewHolder.bindVehicle(model);
 
-                viewHolder.getRootView().setOnClickListener(new View.OnClickListener() {
+                viewHolder.getLiveView().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getContext(), MapActivity.class);
@@ -77,6 +78,13 @@ public class OwnVehicleFragment extends Fragment {
 
                     }
                 });
+
+               viewHolder.getmFoldingCell().setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View view) {
+                       viewHolder.getmFoldingCell().toggle(false);
+                   }
+               });
 
                 viewHolder.getEditView().setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -190,7 +198,7 @@ public class OwnVehicleFragment extends Fragment {
 
         rvVehicle = view.findViewById(R.id.rv_vehicle);
         rvVehicle.setNestedScrollingEnabled(false);
-        rvVehicle.setLayoutManager(new GridLayoutManager(getContext(),2));
+        rvVehicle.setLayoutManager(new LinearLayoutManager(getContext()));
         //rvVehicle.setLayoutManager(new LinearLayoutManager(getContext()));
         rvVehicle.setAdapter(adapter);
 

@@ -12,6 +12,7 @@ public class TripAnimActivity extends BaseAnimActivity {
     @Override
     public void initData() {
         rDataList = (List<RData>) getIntent().getSerializableExtra(Constant.DATA);
+        vType = getIntent().getIntExtra(Constant.V_TYPE,1);
     }
 
     /*private List<LatLng> latLongList;

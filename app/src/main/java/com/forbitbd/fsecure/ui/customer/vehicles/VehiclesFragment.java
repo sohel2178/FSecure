@@ -97,7 +97,6 @@ public class VehiclesFragment extends Fragment implements VehicleContract.View,V
 
                         Bundle bundle = new Bundle();
                         bundle.putSerializable(Constant.DEVICE,model);
-                        bundle.putBoolean(Constant.IS_ADMIN,true);
                         intent.putExtras(bundle);
 
                         startActivity(intent);
@@ -108,6 +107,9 @@ public class VehiclesFragment extends Fragment implements VehicleContract.View,V
                     @Override
                     public void onClick(View view) {
                         EditVehicleFragment editVehicleFragment = new EditVehicleFragment();
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable(Constant.VEHICLE,model);
+                        editVehicleFragment.setArguments(bundle);
                         editVehicleFragment.show(getChildFragmentManager(),"LLL");
 
                     }

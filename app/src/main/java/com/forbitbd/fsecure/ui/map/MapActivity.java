@@ -16,6 +16,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -345,6 +346,8 @@ public class MapActivity extends PrebaseActivity implements OnMapReadyCallback,V
         // Listening From Firebase Database
         mPresenter.startListenFromDevice(deviceID);
 
+        Log.d("JJJJJ",deviceID);
+
     }
 
 
@@ -373,6 +376,7 @@ public class MapActivity extends PrebaseActivity implements OnMapReadyCallback,V
 
     private Bitmap getCarBitmap(int newWidth, int newHeight) {
 
+
         Bitmap bitmap = null;
 
         switch (intentVehicle.getVehicle_type()){
@@ -396,26 +400,18 @@ public class MapActivity extends PrebaseActivity implements OnMapReadyCallback,V
                 }
                 break;
 
-            case 3:
+            default:
                 if(currentVehicle.getData().getStatus().equals("1")){
                     bitmap = BitmapFactory.decodeResource(getResources(),
-                            R.drawable.truck_green);
+                            R.drawable.ic_green);
                 }else{
                     bitmap = BitmapFactory.decodeResource(getResources(),
-                            R.drawable.truck_red);
+                            R.drawable.ic_red);
                 }
-                break;
-
-                default:
-                    if(currentVehicle.getData().getStatus().equals("1")){
-                        bitmap = BitmapFactory.decodeResource(getResources(),
-                                R.drawable.ic_green);
-                    }else{
-                        bitmap = BitmapFactory.decodeResource(getResources(),
-                                R.drawable.ic_red);
-                    }
 
         }
+
+
 
 
 

@@ -261,14 +261,20 @@ public abstract class BaseAnimActivity extends AppCompatActivity implements OnMa
 
         Bitmap bitmap = null;
 
+        // Log.d("MANGGG",vType+"");
+
         switch (vType){
+            case 0:
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.ic_green);
+                break;
             case 1:
                 bitmap = BitmapFactory.decodeResource(getResources(),
                         R.drawable.ic_green);
                 break;
             case 2:
-               /* bitmap = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.bike_green);*/
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.bike_green);
                 break;
         }
 
