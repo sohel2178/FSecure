@@ -92,8 +92,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.2'
 
-    implementation 'com.mxn.soul:flowingdrawer-core:2.0.0'
-    implementation 'com.nineoldandroids:library:2.4.0'
+
     // MP Android Chart
     implementation 'com.github.clans:fab:1.6.4'
     // Fab Menu Button

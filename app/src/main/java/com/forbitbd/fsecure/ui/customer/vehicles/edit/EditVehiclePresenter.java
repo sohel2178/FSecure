@@ -19,13 +19,15 @@ public class EditVehiclePresenter implements EditVehicleContract.Presenter {
     }
 
     @Override
-    public void updateVehicle(Vehicle vehicle) {
+    public void updateVehicle(final Vehicle vehicle) {
         MyDatabaseRef.getInstance()
                 .getDeviceRef()
                 .child(vehicle.getId())
                 .setValue(vehicle, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
+                        databaseReference.child("Data").setValue(vehicle.getData());
+                        databaseReference.child("data").setValue(null);
                         mView.complete();
                     }
                 });

@@ -2,8 +2,8 @@ package com.forbitbd.fsecure.ui.accountAdd;
 
 import android.util.Log;
 
-import com.forbitbd.fsecure.api.AccountClient;
-import com.forbitbd.fsecure.api.AccountServiceGenerator;
+import com.forbitbd.fsecure.api.DeviceClient;
+import com.forbitbd.fsecure.api.ServiceGenerator;
 import com.forbitbd.fsecure.model.Account;
 import com.forbitbd.fsecure.api.accountModel.AccountPostResponse;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,7 +40,7 @@ public class AddAccountPresenter implements AddAccountContract.Presenter {
     @Override
     public void createAccount(Account account) {
         account.setCustomer_id(mCurrentUser.getUid());
-        AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+        DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
         Call<AccountPostResponse> call=client.createAccount(account);
 
         call.enqueue(new Callback<AccountPostResponse>() {

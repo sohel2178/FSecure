@@ -221,6 +221,32 @@
     <string name="inactive">In-active</string>
     <string name="device_sim_number">Device SIM Number</string>
     <string name="vehicle_type">Vehicle Type</string>
+    <string name="search_user">Search User</string>
+    <string name="congestion_consumption">Fuel Lit/Hr in Congestion</string>
+    <string name="date">Date</string>
+    <string name="distance">Distance</string>
+    <string name="fuel">Fuel</string>
+    <string name="congestion_time">Congestion Time</string>
+    <string name="start_time">Start</string>
+    <string name="stop_time">Stop</string>
+    <string name="idle_time">Idle Time</string>
+    <string name="running_time">Running Time</string>
+
+
+    <string-array name="month_array">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
 
 
 </resources>

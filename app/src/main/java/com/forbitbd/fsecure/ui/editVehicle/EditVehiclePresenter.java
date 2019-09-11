@@ -44,7 +44,9 @@ public class EditVehiclePresenter implements EditVehicleContract.Presenter {
 
         if(vehicle.getMileage()==0){
             mView.showError(4,"Please Set a Numeric Value");
+            return false;
         }
+
         return true;
     }
 
@@ -55,6 +57,7 @@ public class EditVehiclePresenter implements EditVehicleContract.Presenter {
         vehicleMap.put("driver_phone",vehicle.getDriver_phone());
         vehicleMap.put("model",vehicle.getModel());
         vehicleMap.put("mileage",vehicle.getMileage());
+        vehicleMap.put("congestion_consumption",vehicle.getCongestion_consumption());
 
         if(vehicle.getDriver_photo()!=null){
             vehicleMap.put("driver_photo",vehicle.getDriver_photo());

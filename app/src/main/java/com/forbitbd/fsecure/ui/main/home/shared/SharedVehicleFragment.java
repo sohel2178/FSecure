@@ -1,6 +1,7 @@
 package com.forbitbd.fsecure.ui.main.home.shared;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,8 @@ import com.forbitbd.fsecure.model.ShareVehicle;
 import com.forbitbd.fsecure.model.Vehicle;
 import com.forbitbd.fsecure.holder.SharedVehicleHolder;
 import com.forbitbd.fsecure.singleton.MyDatabaseRef;
+import com.forbitbd.fsecure.ui.map.MapActivity;
+import com.forbitbd.fsecure.utility.Constant;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,12 +69,12 @@ public class SharedVehicleFragment extends Fragment {
                                         Vehicle vehicle = dataSnapshot.getValue(Vehicle.class);
 
                                         if(vehicle!=null){
-                                            /*Intent intent = new Intent(getContext(), MapActivity.class);
+                                            Intent intent = new Intent(getContext(), MapActivity.class);
                                             Bundle bundle = new Bundle();
                                             bundle.putSerializable(Constant.DEVICE,vehicle);
                                             bundle.putBoolean(Constant.SHARE,true);
                                             intent.putExtras(bundle);
-                                            startActivity(intent);*/
+                                            startActivity(intent);
                                         }
                                     }
 

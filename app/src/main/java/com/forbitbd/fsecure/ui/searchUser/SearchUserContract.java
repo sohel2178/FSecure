@@ -4,18 +4,19 @@ package com.forbitbd.fsecure.ui.searchUser;
 import com.forbitbd.fsecure.model.ShareVehicle;
 import com.forbitbd.fsecure.model.User;
 
+import java.util.List;
+
 public interface SearchUserContract {
 
     interface Presenter{
-        void requestForData(String value, int before, int after);
-        void shareClick(ShareVehicle shareVehicle, String uid, String projectId);
+        void loadData(String text);
+        void shareClick(ShareVehicle shareVehicle,String uid,String vehicleId);
     }
 
     interface View{
-        void updateData(User user, String val);
-        void updateAdapter(String val);
-        void shearClick(User user);
-        void shareDone(String uid);
+        void renderAdapter(List<User> userList);
+        void userSelect(User user);
         void showDialog();
+        void shareDone(String uid);
     }
 }

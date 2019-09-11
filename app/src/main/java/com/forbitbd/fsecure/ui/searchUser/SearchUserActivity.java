@@ -1,11 +1,10 @@
 package com.forbitbd.fsecure.ui.searchUser;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 
@@ -16,22 +15,17 @@ import com.forbitbd.fsecure.model.ShareVehicle;
 import com.forbitbd.fsecure.model.User;
 import com.forbitbd.fsecure.utility.Constant;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class SearchUserActivity extends PrebaseActivity implements SearchUserContract.View{
-
-    private AppCompatEditText etEmail;
-    private RecyclerView rvUsers;
+public class SearchUserActivity extends PrebaseActivity implements SearchUserContract.View,SearchView.OnQueryTextListener{
 
     private SearchUserPresenter mPresenter;
-    private int before,after;
 
-
-    private List<User> userList;
     private UserAdapter adapter;
 
     private String vehicleId;
+
+    private RecyclerView rvUsers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,72 +34,49 @@ public class SearchUserActivity extends PrebaseActivity implements SearchUserCon
 
         this.vehicleId = getIntent().getStringExtra(Constant.VEHICLE_ID);
 
-        userList = new ArrayList<>();
-
         mPresenter = new SearchUserPresenter(this);
-
         adapter = new UserAdapter(this);
+
+        setupToolbar();
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle(R.string.search_user);
 
         initView();
     }
 
     private void initView() {
-        etEmail = findViewById(R.id.et_email);
         rvUsers = findViewById(R.id.rv_user);
         rvUsers.setLayoutManager(new LinearLayoutManager(this));
         rvUsers.setAdapter(adapter);
 
-        etEmail.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                before = charSequence.toString().length();
-            }
+        SearchView mSearchView  = findViewById(R.id.search_view);
+        mSearchView.setOnQueryTextListener(this);
+    }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                after = charSequence.toString().length();
-                String val = charSequence.toString();
 
-                Log.d("UUUUU",before+" ");
-                Log.d("UUUUU",after+" ");
-                Log.d("UUUUU",val+" ");
-                mPresenter.requestForData(val,before,after);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+    @Override
+    public void renderAdapter(List<User> userList) {
+        adapter.setData(userList);
     }
 
     @Override
-    public void updateData(User user, String val) {
-        this.userList.add(user);
-        updateAdapter(val);
-    }
-
-    @Override
-    public void updateAdapter(String value) {
-        if (value.equals("")){
-            adapter.setData(userList);
-        }else {
-            List<User> tempList = new ArrayList<>();
-
-            for (User x: userList){
-                if(x.getEmail().toLowerCase().startsWith(value.toLowerCase())){
-                    tempList.add(x);
-                }
-            }
-
-            adapter.setData(tempList);
-        }
-    }
-
-    @Override
-    public void shearClick(User user) {
+    public void userSelect(User user) {
         ShareVehicle shareVehicle = new ShareVehicle(1,vehicleId);
         mPresenter.shareClick(shareVehicle,user.getUid(),vehicleId);
+
+        Log.d("HHHHH",user.getEmail());
+        /*Intent intent = new Intent(getApplicationContext(), ProjectShareActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Constant.USER,user);
+        bundle.putString(Constant.PROJECT_ID,projectId);
+        bundle.putString(Constant.PROJECT_NAME,projectName);
+        intent.putExtras(bundle);
+        startActivity(intent);*/
+    }
+
+    @Override
+    public void showDialog() {
+        showProgressDialog();
     }
 
     @Override
@@ -117,7 +88,19 @@ public class SearchUserActivity extends PrebaseActivity implements SearchUserCon
     }
 
     @Override
-    public void showDialog() {
-        showProgressDialog();
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.clear();
+
+        if(newText.length()==1){
+           mPresenter.loadData(newText);
+        }else{
+            mPresenter.filter(newText);
+        }
+        return false;
     }
 }

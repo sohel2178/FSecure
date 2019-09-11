@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:focusableInTouchMode="true"
     android:background="@color/colorPrimary">
 
     <LinearLayout
@@ -29,6 +30,7 @@
         app:cardElevation="@dimen/medium_padding"
         app:cardCornerRadius="@dimen/small_padding"
         android:layout_margin="@dimen/large_padding"
+        android:layout_centerInParent="true"
         app:cardBackgroundColor="@color/white"
         >
 
@@ -55,6 +57,12 @@
                         android:hint="@string/email"
                         android:inputType="textEmailAddress" />
 
+                    <View
+                        android:id="@+id/email_bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/light_grey"/>
+
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -68,6 +76,12 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/password"
                         android:inputType="textPassword" />
+
+                    <View
+                        android:id="@+id/pass_bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/light_grey"/>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -90,4 +104,64 @@
     </android.support.v7.widget.CardView>
 
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="@dimen/large_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_visit"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
+        <LinearLayout
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_padding"
+                android:id="@+id/facebook"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="@string/mobitrack_facebook"
+                android:src="@drawable/ic_facebook" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_padding"
+                android:id="@+id/twitter"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="@string/mobitrack_google_plus"
+                android:src="@drawable/ic_twiitter" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/medium_padding"
+                android:id="@+id/linked_in"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="@string/mobitrack_twitter"
+                android:src="@drawable/linkedin" />
+
+            <ImageView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tint="@color/colorPrimary"
+                android:contentDescription="@string/mobitrack_call"
+                android:src="@drawable/ic_call" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

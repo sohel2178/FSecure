@@ -1,8 +1,8 @@
 package com.forbitbd.fsecure.ui.newExpenses;
 
 
-import com.forbitbd.fsecure.api.AccountClient;
-import com.forbitbd.fsecure.api.AccountServiceGenerator;
+import com.forbitbd.fsecure.api.DeviceClient;
+import com.forbitbd.fsecure.api.ServiceGenerator;
 import com.forbitbd.fsecure.api.headModel.HeadGetResponse;
 import com.forbitbd.fsecure.api.model.AccountReq;
 import com.forbitbd.fsecure.api.transModel.TranGetResponse;
@@ -65,7 +65,7 @@ public class ExpensesPresenter implements ExpensesContract.Presenter {
     @Override
     public void getHeadList() {
         if(mFirebaseUser!=null){
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
 
             Call<HeadGetResponse> call = client.getCustomerHeads(new AccountReq(mFirebaseUser.getUid()));
 
@@ -98,7 +98,7 @@ public class ExpensesPresenter implements ExpensesContract.Presenter {
         mView.showDialog();
 
         if(mFirebaseUser!=null){
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
 
             Call<TranGetResponse> call = client.getCustomerTrans(new AccountReq(mFirebaseUser.getUid()));
 

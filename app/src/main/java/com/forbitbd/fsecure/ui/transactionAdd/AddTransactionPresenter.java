@@ -2,8 +2,8 @@ package com.forbitbd.fsecure.ui.transactionAdd;
 
 import android.util.Log;
 
-import com.forbitbd.fsecure.api.AccountClient;
-import com.forbitbd.fsecure.api.AccountServiceGenerator;
+import com.forbitbd.fsecure.api.DeviceClient;
+import com.forbitbd.fsecure.api.ServiceGenerator;
 import com.forbitbd.fsecure.api.accountModel.AccountGetResponse;
 import com.forbitbd.fsecure.api.model.AccountReq;
 import com.forbitbd.fsecure.api.transactionModel.PostTransaction;
@@ -44,7 +44,7 @@ public class AddTransactionPresenter implements AddTransactionContract.Presenter
     @Override
     public void getAllAccounts() {
         if(mCurrentUser!=null){
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
 
             Call<AccountGetResponse> call =client.getCustomerAccounts(new AccountReq(mCurrentUser.getUid()));
 
@@ -135,7 +135,7 @@ public class AddTransactionPresenter implements AddTransactionContract.Presenter
         if(mCurrentUser!=null){
             transaction.setCustomer_id(mCurrentUser.getUid());
 
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
             Call<TransactionPostResponse> call = client.createTransaction(new PostTransaction(transaction));
 
             call.enqueue(new Callback<TransactionPostResponse>() {

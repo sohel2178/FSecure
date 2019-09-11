@@ -123,6 +123,6 @@ public class CustomerFragment extends Fragment implements CustomerContract.View,
     public boolean onQueryTextChange(String newText) {
         adapter.clear();
         mPresenter.filterUser(userList,newText);
-        return false;
+        return true;
     }
 }

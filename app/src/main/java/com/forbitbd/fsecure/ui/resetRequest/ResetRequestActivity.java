@@ -1,8 +1,10 @@
 package com.forbitbd.fsecure.ui.resetRequest;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -17,11 +19,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.forbitbd.fsecure.R;
 
-public class ResetRequestActivity extends AppCompatActivity implements ResetRequestContract.View {
+public class ResetRequestActivity extends AppCompatActivity implements ResetRequestContract.View,View.OnClickListener {
 
     private Button btnSubmit;
     private EditText etEmail;
@@ -30,6 +33,10 @@ public class ResetRequestActivity extends AppCompatActivity implements ResetRequ
     private ProgressBar mProgressBar;
 
     private ResetPresenter mPresenter;
+
+    private View borderEmail;
+
+    private ImageView ivFacebook,ivTwitter,ivLinkedIn,ivPhone;
 
 
     @Override
@@ -54,6 +61,16 @@ public class ResetRequestActivity extends AppCompatActivity implements ResetRequ
 
         mProgressBar = findViewById(R.id.progressBar);
 
+        ivFacebook = findViewById(R.id.facebook);
+        ivTwitter = findViewById(R.id.twitter);
+        ivLinkedIn = findViewById(R.id.linked_in);
+        ivPhone = findViewById(R.id.phone);
+
+        ivFacebook.setOnClickListener(this);
+        ivTwitter.setOnClickListener(this);
+        ivLinkedIn.setOnClickListener(this);
+        ivPhone.setOnClickListener(this);
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +85,19 @@ public class ResetRequestActivity extends AppCompatActivity implements ResetRequ
                 mPresenter.sendResetRequest(email);
 
 
+            }
+        });
+
+        borderEmail = findViewById(R.id.email_bottom);
+
+        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    borderEmail.setVisibility(View.GONE);
+                }else {
+                    borderEmail.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -141,5 +171,51 @@ public class ResetRequestActivity extends AppCompatActivity implements ResetRequ
     @Override
     public void showErrorMessage(int fieldId, String message) {
         tiEmail.setError(message);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.facebook:
+                mPresenter.facebookClick();
+                break;
+
+            case R.id.twitter:
+                mPresenter.twitterClick();
+                break;
+
+            case R.id.linked_in:
+                mPresenter.linkedinClick();
+                break;
+
+            case R.id.phone:
+                mPresenter.phoneClick();
+                break;
+        }
+    }
+
+
+    @Override
+    public void openFacebookPage() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.face_book_link)));
+        startActivity(browserIntent);
+    }
+
+    @Override
+    public void openTwitterPage() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.twitter_link)));
+        startActivity(browserIntent);
+    }
+
+    @Override
+    public void openLinkedInPage() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.linked_in_link)));
+        startActivity(browserIntent);
+    }
+
+    @Override
+    public void callCusmonerCare() {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", getString(R.string.mobi_phone), null));
+        startActivity(intent);
     }
 }

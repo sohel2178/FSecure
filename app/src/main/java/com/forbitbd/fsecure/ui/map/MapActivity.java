@@ -32,6 +32,7 @@ import com.forbitbd.fsecure.markerAnimation.LatLngInterpolator;
 import com.forbitbd.fsecure.markerAnimation.MarkerAnimation;
 import com.forbitbd.fsecure.model.FireData;
 import com.forbitbd.fsecure.model.Vehicle;
+import com.forbitbd.fsecure.ui.monthlyReport.MonthlyReportActivity;
 import com.forbitbd.fsecure.ui.report.ReportActivity;
 import com.forbitbd.fsecure.utility.Constant;
 import com.github.anastr.speedviewlib.TubeSpeedometer;
@@ -90,7 +91,7 @@ public class MapActivity extends PrebaseActivity implements OnMapReadyCallback,V
 
     // Clan
     private FloatingActionMenu fabHam;
-    private com.github.clans.fab.FloatingActionButton fabFence,fabReport,fabRemoveFence;
+    private com.github.clans.fab.FloatingActionButton fabFence,fabReport,fabRemoveFence,fabMonthlyReport;
     private TubeSpeedometer speedometer;
 
     private TextView tvDriverName;
@@ -213,11 +214,13 @@ public class MapActivity extends PrebaseActivity implements OnMapReadyCallback,V
         fabHam = findViewById(R.id.menu);
         fabFence = findViewById(R.id.fab_fence);
         fabReport = findViewById(R.id.fab_report);
+        fabMonthlyReport = findViewById(R.id.fab_monthly_report);
         fabRemoveFence = findViewById(R.id.fab_remove_fence);
 
         fabFence.setOnClickListener(this);
         fabReport.setOnClickListener(this);
         fabRemoveFence.setOnClickListener(this);
+        fabMonthlyReport.setOnClickListener(this);
 
         if(getIntent().getBooleanExtra(Constant.SHARE,false)){
             fabHam.setVisibility(View.GONE);
@@ -307,9 +310,6 @@ public class MapActivity extends PrebaseActivity implements OnMapReadyCallback,V
 
     @Override
     public void drawFence(Fence fence) {
-        /*if(fencePolygon!=null){
-            fencePolygon.remove();
-        }*/
 
         removeFence();
 
@@ -397,6 +397,56 @@ public class MapActivity extends PrebaseActivity implements OnMapReadyCallback,V
                 }else{
                     bitmap = BitmapFactory.decodeResource(getResources(),
                             R.drawable.bike_red);
+                }
+                break;
+
+            case 3:
+                if(currentVehicle.getData().getStatus().equals("1")){
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.micro_green);
+                }else{
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.micro_red);
+                }
+                break;
+
+            case 4:
+                if(currentVehicle.getData().getStatus().equals("1")){
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.bus_green);
+                }else{
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.bus_red);
+                }
+                break;
+
+            case 5:
+                if(currentVehicle.getData().getStatus().equals("1")){
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.truck_green);
+                }else{
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.truck_red);
+                }
+                break;
+
+            case 6:
+                if(currentVehicle.getData().getStatus().equals("1")){
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.cng_green);
+                }else{
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.cng_red);
+                }
+                break;
+
+            case 7:
+                if(currentVehicle.getData().getStatus().equals("1")){
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.ship_green);
+                }else{
+                    bitmap = BitmapFactory.decodeResource(getResources(),
+                            R.drawable.ship_red);
                 }
                 break;
 
@@ -489,6 +539,14 @@ public class MapActivity extends PrebaseActivity implements OnMapReadyCallback,V
                 bundle.putSerializable(Constant.DEVICE,intentVehicle);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                break;
+
+            case R.id.fab_monthly_report:
+                Intent intent1 = new Intent(getApplicationContext(), MonthlyReportActivity.class);
+                Bundle bundle1 = new Bundle();
+                bundle1.putSerializable(Constant.DEVICE,intentVehicle);
+                intent1.putExtras(bundle1);
+                startActivity(intent1);
                 break;
 
             case R.id.fab_remove_fence:

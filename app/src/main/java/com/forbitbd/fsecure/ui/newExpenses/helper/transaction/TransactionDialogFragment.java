@@ -90,6 +90,9 @@ public class TransactionDialogFragment extends DialogFragment implements Transac
             headAdapter = new ArrayAdapter<Head>(getContext(),android.R.layout.simple_list_item_1,parent.getHeadList());
             vehicleAdapter = new ArrayAdapter<Vehicle>(getContext(),android.R.layout.simple_list_item_1,parent.getVehicleList());
 
+            Log.d("UUUUU",parent.getVehicleList().size()+"");
+            Log.d("UUUUU",parent.getVehicleList().size()+"");
+
         }
 
     }

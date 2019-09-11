@@ -23,7 +23,9 @@ public class MainPresenter implements MainContract.Presenter {
         if(mCurrentUser==null){
             mView.startLoginActivity();
         }else {
-            mView.loadHomeFragment();
+            mView.initializeComponents();
         }
     }
+
+
 }

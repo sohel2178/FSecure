@@ -13,6 +13,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -119,6 +121,8 @@ public class PrebaseActivity extends AppCompatActivity {
         mediaPlayer.setLooping(false);
         mediaPlayer.start();
     }
+
+
 
 
     public void setUpNavigationDrawer(){

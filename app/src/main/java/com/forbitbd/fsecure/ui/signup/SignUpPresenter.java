@@ -62,7 +62,6 @@ public class SignUpPresenter implements SignUpContract.Presenter {
     @Override
     public void signUpWithEmailAndPassword(final String email, final String password) {
         mView.showDialog();
-
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Activity) mView, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -83,8 +82,6 @@ public class SignUpPresenter implements SignUpContract.Presenter {
                                             rUser.setEmail(email);
                                             rUser.setPassword(password);
                                             rUser.setUid(user.getUid());
-
-                                            createUser(rUser);
 
                                             User fUser = new User(user.getUid(),user.getEmail());
                                             myDatabaseRef.getUserRef().child(user.getUid())
@@ -115,26 +112,24 @@ public class SignUpPresenter implements SignUpContract.Presenter {
                 });
     }
 
+
     @Override
-    public void createUser(final RUser rUser) {
-        DeviceClient deviceClient = ServiceGenerator.createService(DeviceClient.class);
-        Call<FenceReply> call = deviceClient.resigterUser(rUser);
+    public void facebookClick() {
+        mView.openFacebookPage();
+    }
 
-        call.enqueue(new Callback<FenceReply>() {
-            @Override
-            public void onResponse(Call<FenceReply> call, Response<FenceReply> response) {
-                FenceReply reply = response.body();
+    @Override
+    public void twitterClick() {
+        mView.openTwitterPage();
+    }
 
-                if(reply.isSuccess()){
+    @Override
+    public void linkedinClick() {
+        mView.openLinkedInPage();
+    }
 
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<FenceReply> call, Throwable t) {
-
-            }
-        });
+    @Override
+    public void phoneClick() {
+        mView.callCusmonerCare();
     }
 }

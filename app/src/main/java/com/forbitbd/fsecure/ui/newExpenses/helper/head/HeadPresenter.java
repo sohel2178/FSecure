@@ -2,8 +2,8 @@ package com.forbitbd.fsecure.ui.newExpenses.helper.head;
 
 import android.util.Log;
 
-import com.forbitbd.fsecure.api.AccountClient;
-import com.forbitbd.fsecure.api.AccountServiceGenerator;
+import com.forbitbd.fsecure.api.DeviceClient;
+import com.forbitbd.fsecure.api.ServiceGenerator;
 import com.forbitbd.fsecure.api.headModel.HeadPostResponse;
 import com.forbitbd.fsecure.model.Head;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,7 +45,7 @@ public class HeadPresenter implements HeadContract.Presenter {
 
             mView.showProgressBar();
 
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
 
             Call<HeadPostResponse> call = client.createHead(head);
             call.enqueue(new Callback<HeadPostResponse>() {

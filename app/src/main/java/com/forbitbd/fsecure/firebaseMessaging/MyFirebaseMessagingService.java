@@ -21,9 +21,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
@@ -64,46 +67,23 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
-        // Check if message contains a data payload.
-        if (remoteMessage.getData().size() > 0) {
-            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+        if(remoteMessage.getData().size()>0){
 
-            if (/* Check if data needs to be processed by long running job */ true) {
-                // For long-running tasks (10 seconds or more) use Firebase Job Dispatcher.
-                scheduleJob();
-            } else {
-                // Handle message within 10 seconds
-                handleNow();
+            if(remoteMessage.getData().get(Constant.ALERT_TYPE).equals("Fencing")){
+                String body = remoteMessage.getData().get("body");
+                String title = remoteMessage.getData().get("title");
+                Intent intent = new Intent(Constant.ACTION);
+                intent.putExtra(Constant.ALERT_TYPE,remoteMessage.getData().get(Constant.ALERT_TYPE));
+                intent.putExtra(Constant.DEVICE_ID,remoteMessage.getData().get("device_id"));
+                sendBroadcast(intent);
+
+
+                vibrate(body,title);
             }
-
-            //sendNotification("Vehicle Change its Location");
 
         }
 
-        // Check if message contains a notification payload.
-        if (remoteMessage.getNotification() != null) {
-            String body = remoteMessage.getNotification().getBody();
-            String title = remoteMessage.getNotification().getTitle();
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-            Log.d(TAG, "Message Notification TAg: " + remoteMessage.getNotification().getTitle());
 
-
-
-            if (remoteMessage.getData().size() > 0) {
-                Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-
-                if(remoteMessage.getData().get(Constant.ALERT_TYPE).equals("Fencing")){
-                    Intent intent = new Intent(Constant.ACTION);
-                    intent.putExtra(Constant.ALERT_TYPE,remoteMessage.getData().get(Constant.ALERT_TYPE));
-                    intent.putExtra(Constant.DEVICE_ID,remoteMessage.getData().get("device_id"));
-                    sendBroadcast(intent);
-
-                    fencingNotification(body,title);
-                }
-            }
-
-            //sendNotification(remoteMessage.getNotification().getBody());
-        }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
@@ -173,29 +153,48 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
 
+
     private void fencingNotification(String message,String title){
-        createNotificationChannel();
+        //createNotificationChannel();
 
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(Constant.ALERT_TYPE,"Fencing");
-
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this,CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        mBuilder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000});
+
+        //NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Log.d(TAG,"Notification Called");
 
 // notificationId is a unique int for each notification that you must define
-        notificationManager.notify(1, mBuilder.build());
+        manager.notify(1, mBuilder.build());
 
+    }
+
+    private void vibrate(String body,String title){
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        long[] pattern = {0, 100, 1000, 300, 200, 100, 500, 200, 100};
+
+
+        if (Build.VERSION.SDK_INT >= 26) {
+            v.vibrate(VibrationEffect.createOneShot(2000, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            v.vibrate(pattern,-1);
+        }
+
+        fencingNotification(body,title);
     }
 
     private void createNotificationChannel() {

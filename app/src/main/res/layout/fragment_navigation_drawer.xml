@@ -1,16 +1,14 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    tools:context="com.forbitbd.fsecure.ui.main.nav.NavigationDrawer">
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/user_container_height"
         android:id="@+id/user_container"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimary"
         android:padding="@dimen/default_margin">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -68,6 +66,7 @@
                 style="@style/NavTextStyle"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/admin"

@@ -24,6 +24,7 @@ import com.forbitbd.fsecure.singleton.MyDatabaseRef;
 import com.forbitbd.fsecure.ui.admin.AdminActivity;
 import com.forbitbd.fsecure.ui.expenses.ExpenseActivity;
 import com.forbitbd.fsecure.ui.login.LoginActivity;
+import com.forbitbd.fsecure.ui.main.MainActivity;
 import com.forbitbd.fsecure.ui.main.alert.AlertFragment;
 import com.forbitbd.fsecure.ui.main.home.HomeFragment;
 import com.forbitbd.fsecure.ui.main.payment.PaymentFragment;
@@ -45,21 +46,20 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class NavigationDrawer extends Fragment implements View.OnClickListener,NavContract.View {
 
-    public static final String PREF_NAME ="mypref";
-    public static final String KEY_USER_LEARNED_DRAWERR="user_learned_drawer";
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
 
-    private boolean mUserLearnedDrawer;
-    private boolean mFromSavedInstanceState;
+
+    private CircleImageView ivProfile;
+    private TextView tvName,tvEmail;
+    private LinearLayout rvHome,rvAdmin,rvProfile, rvContactUs, rvLogOut,rvNotifications,rvAlart,rvPayment,rvExpenses;
 
 
     // View Initialize Here
-    private CircleImageView ivProfile;
-    private TextView tvName,tvEmail;
 
-    private LinearLayout rvHome,rvAdmin,rvProfile, rvContactUs, rvLogOut,rvNotifications,rvAlart,rvPayment,llExpense;
+
+
 
     private NavPresenter mPresenter;
 
@@ -71,12 +71,6 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mUserLearnedDrawer = Boolean.valueOf(readFromPreferences(getActivity(),KEY_USER_LEARNED_DRAWERR,"false"));
-
-        // if saveInstanceState is not null its coming back from rotation
-        if(savedInstanceState!=null){
-            mFromSavedInstanceState=true;
-        }
 
         mPresenter = new NavPresenter(this);
 
@@ -99,7 +93,6 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
     }
 
     private void initView(View view) {
-
         ivProfile = view.findViewById(R.id.iv_profile);
         tvName = view.findViewById(R.id.name);
         tvEmail = view.findViewById(R.id.email);
@@ -111,7 +104,7 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
         rvNotifications = view.findViewById(R.id.notification);
         rvAlart = view.findViewById(R.id.alert);
         rvPayment = view.findViewById(R.id.payment);
-        llExpense = view.findViewById(R.id.expenses);
+        rvExpenses = view.findViewById(R.id.expenses);
 
         rvHome.setOnClickListener(this);
         rvAdmin.setOnClickListener(this);
@@ -121,7 +114,8 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
         rvAlart.setOnClickListener(this);
         rvProfile.setOnClickListener(this);
         rvPayment.setOnClickListener(this);
-        llExpense.setOnClickListener(this);
+        rvExpenses.setOnClickListener(this);
+
 
         mPresenter.updateNav();
     }
@@ -151,13 +145,13 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
 
                 //if user gonna not seen the drawer before thats mean the drawer is open for the first time
 
-                if(!mUserLearnedDrawer){
+                /*if(!mUserLearnedDrawer){
                     mUserLearnedDrawer=true;
                     // save it in sharedpreferences
                     saveToPreferences(getActivity(),KEY_USER_LEARNED_DRAWERR,mUserLearnedDrawer+"");
 
                     getActivity().invalidateOptionsMenu();
-                }
+                }*/
 
             }
 
@@ -186,19 +180,6 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
     }
 
 
-    public static void saveToPreferences(Context context, String key, String prefValue){
-        SharedPreferences pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = pref.edit();
-        editor.putString(key,prefValue);
-        editor.apply();
-    }
-
-    public static String readFromPreferences(Context context, String key, String defaultValue){
-        SharedPreferences pref = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-
-        return pref.getString(key,defaultValue);
-    }
 
     @Override
     public void onClick(View view) {
@@ -245,6 +226,7 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
 
     @Override
     public void updateNav(User user) {
+
         if(!user.getPhotoUri().equals("")){
             Picasso.with(getContext())
                     .load(user.getPhotoUri())
@@ -262,6 +244,7 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
         if(user.getIsAdmin()==1){
             rvAdmin.setVisibility(View.VISIBLE);
         }
+
     }
 
     @Override
@@ -325,8 +308,12 @@ public class NavigationDrawer extends Fragment implements View.OnClickListener,N
     public void logout() {
         mDrawerLayout.closeDrawer(Gravity.START);
 
-        FirebaseAuth.getInstance().signOut();
-        getActivity().finish();
-        startActivity(new Intent(getContext(),LoginActivity.class));
+        if(getActivity() instanceof MainActivity){
+            MainActivity mainActivity = (MainActivity) getActivity();
+            mainActivity.logout();
+            startActivity(new Intent(getContext(),LoginActivity.class));
+        }
+
+
     }
 }

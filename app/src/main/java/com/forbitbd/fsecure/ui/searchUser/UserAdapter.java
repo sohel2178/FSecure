@@ -47,16 +47,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
 
         User user = userList.get(position);
 
-        if(user.getName()!=null){
-            holder.tvName.setText(user.getName());
-        }
-
-        if(user.getCompanyName() != null){
-            holder.tvEmail.setText(user.getCompanyName());
-        }
-
-
-
+        holder.tvName.setText(user.getName());
+        holder.tvEmail.setText(user.getCompanyName());
 
         if(user.getPhotoUri()!=null && !user.getPhotoUri().equals("")){
             Picasso.with(holder.itemView.getContext())
@@ -74,19 +66,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
     public void setData(List<User> users){
         this.userList = users;
         notifyDataSetChanged();
-       /* addAllUser(users);
-       // notifyDataSetChanged();*/
     }
 
-
-    public void addUser(User user){
-        this.userList.add(user);
-        int pos = userList.indexOf(user);
-        notifyItemInserted(pos);
-    }
-
-    public void update(String uid){
-        int pos = getPosition(uid);
+    public void clear(){
+        this.userList.clear();
+        notifyDataSetChanged();
     }
 
     public int getPosition(String uid){
@@ -102,12 +86,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
         return retInt;
     }
 
+
+
     class UserHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         CircleImageView imageView;
         TextView tvName,tvEmail;
+
         Button btnShare;
-       // CircularProgressButton btnShare;
 
         public UserHolder(View itemView) {
             super(itemView);
@@ -116,19 +102,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserHolder> {
             tvName = itemView.findViewById(R.id.name);
             tvEmail = itemView.findViewById(R.id.email);
             btnShare = itemView.findViewById(R.id.btn_share);
-            btnShare.setOnClickListener(this);
-            /*btnShare = itemView.findViewById(R.id.btn_share);
-            btnShare.setProgress(0);
 
-            btnShare.setOnClickListener(this);*/
+            btnShare.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             if(mView!=null){
-               /* btnShare.setIndeterminateProgressMode(true);
-                btnShare.setProgress(50);*/
-                mView.shearClick(userList.get(getAdapterPosition()));
+                mView.userSelect(userList.get(getAdapterPosition()));
             }
 
         }

@@ -41,6 +41,8 @@ public class LoginActivity extends PrebaseActivity implements View.OnClickListen
 
     private LoginPresenter mPresenter;
 
+    private View borderEmail,borderPass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +81,31 @@ public class LoginActivity extends PrebaseActivity implements View.OnClickListen
         btnLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
         tvForgetPassword.setOnClickListener(this);
+
+        borderEmail = findViewById(R.id.email_bottom);
+        borderPass = findViewById(R.id.pass_bottom);
+
+        etEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    borderEmail.setVisibility(View.GONE);
+                }else {
+                    borderEmail.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        etPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    borderPass.setVisibility(View.GONE);
+                }else {
+                    borderPass.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     @Override
@@ -128,7 +155,7 @@ public class LoginActivity extends PrebaseActivity implements View.OnClickListen
     }
 
     private void startResetRequestActivity(){
-        finish();
+        //finish();
         Intent intent = new Intent(getApplicationContext(),ResetRequestActivity.class);
         startActivity(intent);
     }

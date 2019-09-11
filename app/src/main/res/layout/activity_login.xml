@@ -47,7 +47,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"/>
+
+                <View
+                    android:id="@+id/email_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/light_grey"/>
+
 
             </android.support.design.widget.TextInputLayout>
 
@@ -60,7 +67,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"/>
+
+                <View
+                    android:id="@+id/pass_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/light_grey"/>
 
             </android.support.design.widget.TextInputLayout>
 

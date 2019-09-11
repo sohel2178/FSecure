@@ -68,7 +68,6 @@ public class AlertPresenter implements AlertContract.Presenter {
             @Override
             public void onResponse(Call<FenceReply> call, Response<FenceReply> response) {
                 FenceReply fenceReply = response.body();
-
                 if(fenceReply!=null){
                     if(fenceReply.isSuccess()){
                         mView.deleteFenceAlart(position);
@@ -80,7 +79,7 @@ public class AlertPresenter implements AlertContract.Presenter {
 
             @Override
             public void onFailure(Call<FenceReply> call, Throwable t) {
-                mView.showToast("Error in Deleting Fence Alart");
+                mView.showToast("Error in Deleting Fence Alert");
             }
         });
 

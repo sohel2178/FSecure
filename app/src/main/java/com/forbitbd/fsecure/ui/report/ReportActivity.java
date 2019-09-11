@@ -306,8 +306,6 @@ public class ReportActivity extends PrebaseActivity implements View.OnClickListe
 
                 requestBody.setDevice_time(MyUtil.getReqDate(selectedDate));
                 mPresenter.requestForData(requestBody);
-                //updateTitle();
-                //firestoreReq2();
             }
         }).pickerType(CalendarView.ONE_DAY_PICKER).date(Calendar.getInstance())
                 ;

@@ -276,6 +276,35 @@ public abstract class BaseAnimActivity extends AppCompatActivity implements OnMa
                 bitmap = BitmapFactory.decodeResource(getResources(),
                         R.drawable.bike_green);
                 break;
+
+            case 3:
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.micro_green);
+                break;
+
+            case 4:
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.bus_green);
+                break;
+
+            case 5:
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.truck_green);
+                break;
+
+            case 6:
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.cng_green);
+                break;
+
+            case 7:
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.ship_green);
+                break;
+
+            default:
+                bitmap = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.ic_green);
         }
 
 

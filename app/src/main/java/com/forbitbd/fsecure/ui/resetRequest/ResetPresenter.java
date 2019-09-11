@@ -45,4 +45,24 @@ public class ResetPresenter implements ResetRequestContract.Presenter {
                 });
 
     }
+
+    @Override
+    public void facebookClick() {
+        mView.openFacebookPage();
+    }
+
+    @Override
+    public void twitterClick() {
+        mView.openTwitterPage();
+    }
+
+    @Override
+    public void linkedinClick() {
+        mView.openLinkedInPage();
+    }
+
+    @Override
+    public void phoneClick() {
+        mView.callCusmonerCare();
+    }
 }

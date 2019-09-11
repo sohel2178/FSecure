@@ -2,18 +2,10 @@ package com.forbitbd.fsecure.ui.newExpenses.transactionHistory;
 
 import android.util.Log;
 
-import com.forbitbd.fsecure.api.AccountClient;
-import com.forbitbd.fsecure.api.AccountServiceGenerator;
-import com.forbitbd.fsecure.api.headModel.HeadGetResponse;
-import com.forbitbd.fsecure.api.model.AccountReq;
+import com.forbitbd.fsecure.api.DeviceClient;
+import com.forbitbd.fsecure.api.ServiceGenerator;
 import com.forbitbd.fsecure.api.transModel.TranPostResponse;
-import com.forbitbd.fsecure.model.Head;
 import com.forbitbd.fsecure.model.Tran;
-import com.forbitbd.fsecure.singleton.MyDatabaseRef;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +40,7 @@ public class HistoryPresenter implements HistoryContract.Presenter {
 
         mView.showProgressBar();
 
-        AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+        DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
         Call<TranPostResponse> call = client.deleteTransaction(tran.get_id());
 
         call.enqueue(new Callback<TranPostResponse>() {

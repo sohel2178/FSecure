@@ -1,11 +1,9 @@
 package com.forbitbd.fsecure.ui.expenses.head;
 
-import com.forbitbd.fsecure.api.AccountClient;
-import com.forbitbd.fsecure.api.AccountServiceGenerator;
-import com.forbitbd.fsecure.api.accountModel.AccountGetResponse;
+import com.forbitbd.fsecure.api.DeviceClient;
+import com.forbitbd.fsecure.api.ServiceGenerator;
 import com.forbitbd.fsecure.api.headModel.HeadGetResponse;
 import com.forbitbd.fsecure.api.model.AccountReq;
-import com.forbitbd.fsecure.model.Account;
 import com.forbitbd.fsecure.model.Head;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +33,7 @@ public class HeadPresenter implements HeadContract.Presenter {
         if(mCurrentUser!=null){
             String uid = mCurrentUser.getUid();
 
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
 
             Call<HeadGetResponse> call = client.getCustomerHeads(new AccountReq(uid));
 

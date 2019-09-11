@@ -2,14 +2,11 @@ package com.forbitbd.fsecure.ui.newExpenses.helper.transaction;
 
 import android.util.Log;
 
-import com.forbitbd.fsecure.api.AccountClient;
-import com.forbitbd.fsecure.api.AccountServiceGenerator;
+import com.forbitbd.fsecure.api.DeviceClient;
+import com.forbitbd.fsecure.api.ServiceGenerator;
 import com.forbitbd.fsecure.api.transModel.PostTran;
 import com.forbitbd.fsecure.api.transModel.TranPostResponse;
-import com.forbitbd.fsecure.api.transactionModel.PostTransaction;
-import com.forbitbd.fsecure.api.transactionModel.TransactionPostResponse;
 import com.forbitbd.fsecure.model.Tran;
-import com.forbitbd.fsecure.model.Transaction;
 import com.forbitbd.fsecure.singleton.MyDatabaseRef;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -70,7 +67,7 @@ public class TransactionPresenter implements TransactionContract.Presenter {
         if(mFirebaseUser!=null){
             transaction.setCustomer_id(mFirebaseUser.getUid());
 
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
 
             Call<TranPostResponse> call = client.saveTransaction(new PostTran(transaction));
 
@@ -103,7 +100,7 @@ public class TransactionPresenter implements TransactionContract.Presenter {
 
         if(mFirebaseUser!=null){
 
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
 
             Call<TranPostResponse> call = client.updateTransaction(transaction.get_id(),new PostTran(transaction));
 

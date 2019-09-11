@@ -18,7 +18,7 @@ public class AdminActivity extends AdminBaseActivity implements AdminContract.Vi
 
         mPresenter = new AdminPresenter(this);
 
-        setUpNavigationDrawer();
+        setupToolbar();
 
         if(savedInstanceState==null){
             mPresenter.loadCustomerFragment();

@@ -1,7 +1,7 @@
 package com.forbitbd.fsecure.ui.expenses.transaction;
 
-import com.forbitbd.fsecure.api.AccountClient;
-import com.forbitbd.fsecure.api.AccountServiceGenerator;
+import com.forbitbd.fsecure.api.DeviceClient;
+import com.forbitbd.fsecure.api.ServiceGenerator;
 import com.forbitbd.fsecure.api.model.AccountReq;
 import com.forbitbd.fsecure.api.transactionModel.CustomerTransactionResponse;
 import com.forbitbd.fsecure.model.Transaction;
@@ -25,7 +25,7 @@ public class TransactionPresenter implements TransactionContract.Presenter {
     @Override
     public void getAllTransaction() {
         if(mCurrentUser!=null){
-            AccountClient client = AccountServiceGenerator.createService(AccountClient.class);
+            DeviceClient client = ServiceGenerator.createService(DeviceClient.class);
 
             Call<CustomerTransactionResponse> call = client.getCustomerTransactions(new AccountReq(mCurrentUser.getUid()));
 

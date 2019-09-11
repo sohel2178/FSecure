@@ -46,11 +46,11 @@
     </style>
 
     <style name="NameTextStyle">
-        <item name="android:layout_marginBottom">@dimen/default_margin</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
         <item name="android:textColor">@color/text_light</item>
         <item name="android:padding">@dimen/small_padding</item>
     </style>
@@ -58,6 +58,7 @@
     <style name="EmailTextStyle" parent="NameTextStyle">
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">italic</item>
+        <item name="android:padding">0dp</item>
     </style>
 
     <style name="SmallHeader">
@@ -249,6 +250,20 @@
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
         <item name="colorControlHighlight">@color/colorAccent</item>
+    </style>
+
+    <style name="MonthlyItemTextStyle">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/metal_color</item>
+        <item name="android:padding">@dimen/small_padding</item>
+        <item name="android:shadowColor">@color/metal_color</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
     </style>
 
 

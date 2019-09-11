@@ -58,6 +58,8 @@ public class ReportPresenter implements ReportContract.Presenter {
                     //Log.d("JJJJJ",response.body().);
                     Log.d("JJJJJ",response.body().getLocations().size()+"");
 
+                    //Observable<List<RData>> filObs = Observable.from(response.body().getLocations());
+
 
                     Observable<List<RData>> filObs = Observable.fromCallable(new Callable<List<RData>>() {
                         @Override
@@ -192,7 +194,7 @@ public class ReportPresenter implements ReportContract.Presenter {
     }
 
     private List<RData> getFilteredData(List<RData> rDataList ){
-        List<RData> retList = new ArrayList<>();
+        /*List<RData> retList = new ArrayList<>();
 
         if(rDataList.size()>2){
             RData fd = rDataList.get(0);
@@ -211,9 +213,9 @@ public class ReportPresenter implements ReportContract.Presenter {
             }
         }
 
-        retList.add(rDataList.get(rDataList.size()-1));
+        retList.add(rDataList.get(rDataList.size()-1));*/
 
-        return retList;
+        return rDataList;
     }
 
     private List<VehicleStatus> getVehicleStatusList(List<RData> rDataList){

@@ -274,12 +274,19 @@ public class MyUtil {
         for(int i=0;i<myLatLongList.size();i++ ){
             //myLatLongList.add(new MyLatLong(x));
 
+            Log.d("TIMEChecker", myLatLongList.get(i).getDevice_time());
+
             if(i==0){
                 firstLoc =new LatLng(myLatLongList.get(i).getLat(),myLatLongList.get(i).getLng());
             }else{
                 nextLoc =new LatLng(myLatLongList.get(i).getLat(),myLatLongList.get(i).getLng());
 
-                distance = distance+ Haversine.distance(firstLoc.latitude,firstLoc.longitude,nextLoc.latitude,nextLoc.longitude);
+                double x = Haversine.distance(firstLoc.latitude,firstLoc.longitude,nextLoc.latitude,nextLoc.longitude);
+                //Log.d("UUUUUUUUU",x+"");
+
+                if(Math.abs(x)>2){
+                    distance = distance+ x;
+                }
 
                 firstLoc = nextLoc;
             }

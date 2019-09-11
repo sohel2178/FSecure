@@ -16,6 +16,7 @@ public class Vehicle implements Serializable {
     private String device_sim_number;
     private int vehicle_type;
     private double mileage;
+    private double congestion_consumption;
     private FireData Data;
     private String fuelStatus;
 
@@ -102,6 +103,14 @@ public class Vehicle implements Serializable {
 
     public void setDevice_sim_number(String device_sim_number) {
         this.device_sim_number = device_sim_number;
+    }
+
+    public double getCongestion_consumption() {
+        return congestion_consumption;
+    }
+
+    public void setCongestion_consumption(double congestion_consumption) {
+        this.congestion_consumption = congestion_consumption;
     }
 
     public String getFuelStatus() {

@@ -14,6 +14,8 @@ public class UserLocalStore {
     private static final String MOBI_SUBSCRIBE ="MOBI_SUBSCRIBE";
     private static final String TOKEN_UPDATE ="TOKEN_UPDATE";
     private static final String COMPANY_DESC="COMPANY_DESC";
+    private static final String ADDRESS="ADDRESS";
+    private static final String ORGANIZATION_NAME="ORGANIZATION_NAME";
 
     private SharedPreferences userLocalDatabase;
 
@@ -53,6 +55,23 @@ public class UserLocalStore {
 
     public void setTokenUpdate(boolean value){
         userLocalDatabase.edit().putBoolean(TOKEN_UPDATE,value).apply();
+    }
+
+    public void setOrganizationName(String name){
+        userLocalDatabase.edit().putString(ORGANIZATION_NAME,name).apply();
+    }
+
+    public String getOrganizationName(){
+        return userLocalDatabase.getString(ORGANIZATION_NAME,null);
+    }
+
+
+    public void setAddress(String name){
+        userLocalDatabase.edit().putString(ADDRESS,name).apply();
+    }
+
+    public String getAddress(){
+        return userLocalDatabase.getString(ADDRESS,null);
     }
 
 

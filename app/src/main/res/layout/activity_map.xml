@@ -25,47 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-   <!-- <android.support.design.widget.FloatingActionButton
-        android:layout_marginStart="@dimen/small_padding"
-        android:layout_marginTop="@dimen/small_padding"
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:elevation="@dimen/medium_padding"
-        app:backgroundTint="@color/colorPrimary"
-        app:fabSize="normal"
-        app:srcCompat="@drawable/ic_back_arrow"
-        android:tint="@android:color/white"/>-->
-
-    <!--<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:id="@+id/back"
-            android:padding="@dimen/default_margin"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_back_arrow"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/medium_padding"
-            android:layout_toEndOf="@+id/back"
-            android:layout_centerVertical="true"
-            android:id="@+id/model"
-            android:textSize="15sp"
-            android:padding="@dimen/small_padding"
-            android:gravity="center_vertical"/>
-    </RelativeLayout>-->
-
-
-
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -222,7 +181,18 @@
             fab:fab_colorPressed="@color/colorPrimaryDark"
             fab:fab_colorRipple="@color/light_grey"
             fab:fab_size="mini"
-            fab:fab_label="Report" />
+            fab:fab_label="Daily Report" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_monthly_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chart"
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorPrimaryDark"
+            fab:fab_colorRipple="@color/light_grey"
+            fab:fab_size="mini"
+            fab:fab_label="Monthly Report" />
 
 
     </com.github.clans.fab.FloatingActionMenu>

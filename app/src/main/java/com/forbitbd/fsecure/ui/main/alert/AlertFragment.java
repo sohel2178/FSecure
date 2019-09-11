@@ -86,7 +86,7 @@ public class AlertFragment extends Fragment implements AlertContract.View ,Recyc
 
     @Override
     public void showToast(String message) {
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -117,11 +117,6 @@ public class AlertFragment extends Fragment implements AlertContract.View ,Recyc
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         Fence fe = adapter.getFence(position);
-
         mPresenter.deleteFenceAlart(fe.get_id(),position);
-
-
-
-
     }
 }

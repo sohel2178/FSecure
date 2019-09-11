@@ -158,7 +158,6 @@ public class VehicleHolder extends RecyclerView.ViewHolder {
     private LatLng getLatLong(String lat, String lng){
         double lati = (double)Long.parseLong(lat,16)/1800000;
         double longi = (double)Long.parseLong(lng,16)/1800000;
-
         return new LatLng(lati,longi);
     }
 }

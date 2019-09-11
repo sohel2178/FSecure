@@ -5,6 +5,11 @@ public interface ResetRequestContract {
     interface Presenter{
         boolean validate(String email);
         void sendResetRequest(String email);
+
+        void facebookClick();
+        void twitterClick();
+        void linkedinClick();
+        void phoneClick();
     }
 
     interface View {
@@ -14,5 +19,10 @@ public interface ResetRequestContract {
         void showMessageDialog();
 
         void showErrorMessage(int fieldId, String message);
+
+        void openFacebookPage();
+        void openTwitterPage();
+        void openLinkedInPage();
+        void callCusmonerCare();
     }
 }
