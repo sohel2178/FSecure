@@ -3,7 +3,7 @@
     <string name="contact_us">Contact Us</string>
 
     <!--<string name="google_map_key_my">AIzaSyDpIfAvz9xaXCiBueo3SNYOj6rgqvRJxFk</string>-->
-    <string name="google_map_key">AIzaSyDO_N2owPZW7z7-iB60t_EGFZPk73-HL7c</string>
+    <string name="google_map_key">AIzaSyBWhZHHrzmqV3P3Vxs-be28id5ckkomFlI</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 
     <string name="permission_txt">App need to Permission for READ,SENT and RECEIVED SMS</string>
